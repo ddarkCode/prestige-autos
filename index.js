@@ -7,6 +7,8 @@ import {connect} from 'mongoose';
 import React from 'react';
 import debug from 'debug';
 
+import carRoutes from './routes/carRouter';
+
 const {PORT, MONGO_URL_LOCAL} = process.env
 const log = debug('app');
 
@@ -25,6 +27,8 @@ app.use(express.static('public'));
 app.use(express.json())
 app.use(express.urlencoded({extended: true}));
 app.use(morgan('combined'));
+
+app.use('/api/cars', carRoutes())
 
 app.get('/', (req, res) => {
   res.send('Hello Prestige Vehicles');
