@@ -4,6 +4,8 @@ import debug from 'debug';
 import Car from '../models/carModel';
 import carController from '../controllers/carController';
 
+import carValidator from '../validators/carValidator';
+
 const log = debug('app:carRouter');
 
 function carRoutes() {
@@ -12,7 +14,7 @@ function carRoutes() {
 
   carRouter.route('/')
   .get(getCars )
-  .post(postCar)
+  .post(carValidator, postCar)
   carRouter.route('/:carId')
   .all( async (req, res, next) => {
     const {carId} = req.params;
