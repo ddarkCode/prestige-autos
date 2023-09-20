@@ -9,12 +9,16 @@ import debug from 'debug';
 import session from 'express-session';
 import { rateLimit } from 'express-rate-limit'
 import {renderToString} from 'react-dom/server';
+import ejs from 'ejs';
 
+import './src/index.css';
 import carRoutes from './routes/carRoutes';
 import authRoutes from './routes/authRoutes';
 import passportConfig from './passportConfig/passport';
 
+import Routes from './src/Routes';
 import App from './src/pages/App';
+import renderer from './helpers/renderer';
 
 const {PORT, MONGO_URL_LOCAL, SESSION_SECRET} = process.env
 const log = debug('app');
@@ -29,6 +33,8 @@ const app = express();
     log(err)
   }
 }())
+
+app.set('view engine', 'ejs')
 
 app.use(session({
   secret: SESSION_SECRET,
@@ -56,21 +62,9 @@ app.use('/api/users', authRoutes());
 
 app.get('*', (req, res) => {
 
-  const content = renderToString(<App/>)
-
-  const html = `
-  <html>
-    <head></head>
-    <body>
-    
-
-       <div id="root">${content}</div>
-       <script src="bundle.js"></script>
-    </body>
-  </html>
-  
-  `
-  res.send(html);
+  const content = renderer(req);
+ 
+  res.render('index', {content});
 })
 
 app.listen(PORT, () => log(`Server is running on port:${PORT}`));

@@ -1,0 +1,28 @@
+header {
+  margin: 15px 0;
+  font: inherit;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul {
+  display: flex;
+  align-items: center;
+}
+
+nav ul li {
+  margin-left: 10px;
+}
+a {
+  font-size: inherit;
+}
+
+.logo {
+  font-size: 1.5em;
+  font-weight: 700;
+  font-style: italic;
+}
