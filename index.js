@@ -8,7 +8,7 @@ import React from 'react';
 import debug from 'debug';
 import session from 'express-session';
 import { rateLimit } from 'express-rate-limit'
-import {renderToString} from 'react-dom/server';
+import { matchRoutes } from 'react-router-config';
 import ejs from 'ejs';
 
 import './src/index.css';
@@ -16,9 +16,10 @@ import carRoutes from './routes/carRoutes';
 import authRoutes from './routes/authRoutes';
 import passportConfig from './passportConfig/passport';
 
-import Routes from './src/Routes';
+import routes from './src/Routes';
 import App from './src/pages/App';
 import renderer from './helpers/renderer';
+import createStore from './helpers/createStore';
 
 const {PORT, MONGO_URL_LOCAL, SESSION_SECRET} = process.env
 const log = debug('app');
@@ -60,11 +61,28 @@ app.use('/api', apiLimiter)
 app.use('/api/cars', carRoutes())
 app.use('/api/users', authRoutes());
 
-app.get('*', (req, res) => {
 
-  const content = renderer(req);
+
+
+app.get('*', (req, res) => {
+  const store = createStore()
+
+  const matchedRoutes = matchRoutes(routes, req.path);
+  const promises = matchedRoutes.map(({route}) => route.loadData ? route.loadData(store) : null)
+  .filter(prom => prom !== null).map(promise => {
+    return new Promise((resolve, reject) => {
+      promise.then(resolve).catch(resolve);
+    })
+  });
+  // log(promises);
+Promise.all(promises).then(() => {
+  const context = {}
+  const html = renderer(req, store, context);
  
-  res.render('index', {content});
+  res.send(html);
+})
+
+
 })
 
 app.listen(PORT, () => log(`Server is running on port:${PORT}`));
