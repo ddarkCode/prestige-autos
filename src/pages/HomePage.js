@@ -1,6 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
+import ExploreButton from '../components/exploreButton/ExploreButton';
+
 import './css/homePage.css'
 
 function HomePage() {
@@ -10,7 +12,7 @@ function HomePage() {
         <h3>The Easiest Way To buy A Car</h3>
         <div>
         <p>Explore The Latest Innovations And Hottest Wheels On Our Car Enthusiast Website!</p>
-        <Link to='/pages/explore'>Get Started</Link>
+        <ExploreButton text={'Get Started'} />
         </div>
       </div>
 

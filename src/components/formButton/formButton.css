@@ -1,0 +1,9 @@
+form button{
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 300;
+  height: 35px;
+  border: none;
+  background-color: #9eb4f0;
+  color: #fff;
+}

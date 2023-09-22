@@ -1,0 +1,9 @@
+.exploreButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #EE9322;
+  height: 30px;
+  font-weight: 500;
+  width: 150px;
+}

@@ -28,16 +28,6 @@
   margin-bottom: 20px;
 }
 
-.home-info a {
-  display: block;
-  background-color: #EE9322;
-  height: 22px;
-  padding-top: 11px;
-  font-weight: 500;
-  text-align: center;
-  width: 150px;
-}
-
 .home-image-container {
  text-align: center;
  height: 450px;

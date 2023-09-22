@@ -1,0 +1,12 @@
+.car-brand {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.brand-name {
+  margin: 30px 0;
+  font-size: 20px;
+  font-weight: 500;
+}

@@ -1,6 +1,8 @@
 import {config} from 'dotenv';
 config();
 
+global.window = {};
+
 import express from 'express';
 import morgan from 'morgan';
 import {connect} from 'mongoose';

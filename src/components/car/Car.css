@@ -1,0 +1,47 @@
+.car-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 370px;
+  height: 400px;
+  line-height: 1.8;
+  margin-right: 45px;
+  margin-bottom: 40px;
+ 
+}
+.car-container:nth-child(3) {
+  margin-right: 0;
+}
+.car-image-container {
+  width: 100%;
+  height: 250px;
+  text-align: center;
+}
+.car-container img {
+  width: 100%;
+  object-fit: cover;
+}
+.car-container h5 {
+  font-size: 21px;
+  font-weight: 500;
+}
+
+.car-container p {
+  font-size: 12px;
+  font-weight: 300;
+}
+.car-container p:last-child {
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.car-container a {
+  
+  border: 1px solid #fff;
+  height: 40px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 17px;
+}

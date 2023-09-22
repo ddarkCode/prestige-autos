@@ -1,0 +1,40 @@
+.about-page h1 {
+  margin: 30px 0;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.about-page-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 1.4;
+}
+
+.about-page-info div:first-child {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  width: 35%;
+}
+
+.about-page-info div:nth-child(2) {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  width: 30%;
+}
+
+.about-page-info div:nth-child(2) p {
+  margin-bottom: 20px;
+}
+
+.about-page-image-container {
+  width: 100%;
+  text-align: center;
+}
+
+.about-page-image-container img {
+  width: 100%;
+  object-fit: cover;
+}

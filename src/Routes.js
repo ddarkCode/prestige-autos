@@ -7,6 +7,8 @@ import CarsPage from "./pages/CarsPage";
 import CarPage from "./pages/CarPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
+import Signup from "./pages/Signup";
+import Signin from "./pages/Signin";
 
 
 
@@ -27,7 +29,20 @@ routes: [
       },
       {
         ...CarsPage,
-        path: '/pages/cars'
+        path: '/pages/cars',
+        exact: true
+      },
+      {
+        ...CarPage,
+        path: '/pages/cars/model'
+      },
+      {
+        ...Signup,
+        path: '/pages/auth/signup'
+      },
+      {
+        ...Signin,
+        path: '/pages/auth/signin'
       },
       {
         ...ContactPage,
