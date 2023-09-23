@@ -23,14 +23,14 @@ import App from './src/pages/App';
 import renderer from './helpers/renderer';
 import createStore from './helpers/createStore';
 
-const {PORT, MONGO_URL_LOCAL, SESSION_SECRET} = process.env
+const {PORT, MONGO_URL_LOCAL, SESSION_SECRET, MONGO_CLOUD} = process.env
 const log = debug('app');
 
 const app = express();
 
 (async function connectMongo(){
   try {
-    await connect(MONGO_URL_LOCAL);
+    await connect(MONGO_CLOUD);
     log('Mongo Database Connected Successfully!')
   } catch (err) {
     log(err)
@@ -65,12 +65,28 @@ app.use('/api/users', authRoutes());
 
 
 
+function reqMiddleware(req, res, next) {
+  if (req.originalUrl === '/favicon.ico') {
+    res.status(204).end()
+  } else {
+    next()
+  }
+}
 
-app.get('*', (req, res) => {
-  const store = createStore()
+app.get('*', reqMiddleware,(req, res) => {
+  const store = createStore();
+  const query = req.originalUrl.split('/').find(u => u.startsWith('?'))
+  const carId = req.originalUrl.split('/')[3]
+
+  
+  log('Request.url uurl: ', carId);
+  log('Full uurl: ', carId);
+  log('Full uurl: ', req.originalUrl.split('/'));
+  log('Full uurl: ', query);
 
   const matchedRoutes = matchRoutes(routes, req.path);
-  const promises = matchedRoutes.map(({route}) => route.loadData ? route.loadData(store) : null)
+//  console.log(req)
+  const promises = matchedRoutes.map(({route}) => route.loadData ? route.loadData(store, query, carId) : null)
   .filter(prom => prom !== null).map(promise => {
     return new Promise((resolve, reject) => {
       promise.then(resolve).catch(resolve);

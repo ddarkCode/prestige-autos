@@ -2,10 +2,14 @@ import React from 'react';
 
 import './form.css';
 
-function Form({children}) {
+function Form(props) {
+  function onSubmit(e) {
+    e.preventDefault()
+    props.handleSubmit()
+  }
   return (
-    <form>
-      {children}
+    <form onSubmit={onSubmit}>
+      {props.children}
     </form>
   )
 }

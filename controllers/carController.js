@@ -1,5 +1,5 @@
 import debug from "debug";
-
+import {lowerCase} from 'lodash';
 import Car from "../models/carModel";
 
 const log = debug('app:carController');
@@ -7,12 +7,10 @@ const log = debug('app:carController');
 function carController() {
 const getCars = async (req, res) => {
   const query = {};
-  if (req.query.name)  {
-    query.name = req.query.name
+  if (req.query.brand)  {
+    query.brand = req.query.brand
   }
-  if (req.query.make) {
-    query.make = req.query.make
-  }
+
   try {
     const cars = await Car.find(query);
     res.status(200).json(cars)
@@ -22,10 +20,28 @@ const getCars = async (req, res) => {
   }
 }
 const postCar = async(req, res) => {
+  const {brand, model, price, year, description, imageUrl} = req.body
+  const car = {
+    brand: lowerCase(brand), model, price, year, description, imageUrl
+  }
   try {
-    const newCar = new Car(req.body)
+    const newCar = new Car(car);
     await newCar.save();
     res.status(201).json(newCar);
+  } catch (err) {
+    log(err);
+    res.status(500).json(err)
+  }
+}
+const getCarByIdMiddleware =  async (req, res, next) => {
+  const {carId} = req.params;
+  try {
+    const foundCar = await Car.findById(carId);
+    if (!foundCar) {
+      res.status(404).json('Not Found!');
+    }
+    req.car = foundCar;
+    next();
   } catch (err) {
     log(err);
     res.status(500).json(err)
@@ -64,9 +80,10 @@ const deleteCar = async(req, res) => {
     return res.status(500).json(err);
   }
 }
-
+ 
   return {
-getCars, getCar, postCar, putCar, patchCar, deleteCar
+getCars, getCar, postCar, putCar, patchCar, deleteCar,
+getCarByIdMiddleware
   }
 }
 

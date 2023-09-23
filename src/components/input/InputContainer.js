@@ -3,11 +3,11 @@ import {capitalize} from 'lodash';
 
 import './inputContainer.css'
 
-function InputContainer({type, name}) {
+function InputContainer({type, name, value, onChange}) {
   return (
     <div className='input-container'>
           <label htmlFor={name}>{capitalize(name)}</label>
-          <input type={type} name={name} id={name} />
+          <input type={type} name={name} id={name} value={value} onChange={onChange} />
         </div>
   )
 }

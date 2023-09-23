@@ -25,14 +25,14 @@ function ExplorePage({cars, getCars}) {
   }, [])
 
   return (
-    <div className='explore' style={{height: `${ windowWidth <= 975 ? 470 * cars.length : windowWidth <= 1200 ? 600 *  (cars.length /2) : 500 * (cars.length/3)}`+'px'}}>
+    <div className='explore'>
       <div className='explore-info'>
       <h2>HIGHLIGHT STYLE </h2>
       <p>We Understand That Every Event Is Unique, And We Strive To Accommodate Your Individual Needs</p>
       </div>
       <div className='explore-cars'>
         {
-        shuffle(cars).map(car => <Car key={car._id} {...car} />)
+        cars.map(car => <Car key={car._id} {...car} />)
       }
       </div>
       

@@ -2,11 +2,12 @@ import Joi from 'joi';
 
 
 const carSchema = Joi.object({
-  name: Joi.string().required().min(4),
-  model: Joi.string().required().min(2),
-  year: Joi.number().required(),
-  price: Joi.number().required(),
-  image_url: Joi.string().required().min(20),
+  brand: Joi.string().required().min(2),
+  model: Joi.string().required(),
+  description: Joi.string().required(),
+  year: Joi.string().required(),
+  price: Joi.string().required(),
+  imageUrl: Joi.string().required().min(20),
 
 })
 

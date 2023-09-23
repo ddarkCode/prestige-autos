@@ -1,7 +1,7 @@
 import {model, Schema} from 'mongoose';
 
 const carSchema = new Schema({
-  name: {
+  brand: {
     type: String,
     required: true
   },
@@ -9,15 +9,19 @@ const carSchema = new Schema({
     type: String,
     required: true
   },
+  description: {
+    type: String,
+    required: true
+  },
   year: {
-    type: Number,
+    type: String,
     required: true
   },
   price: {
-    type: Number,
+    type: String,
     required: true
   },
-  image_url: {
+  imageUrl: {
     type: String,
     required: true
   }

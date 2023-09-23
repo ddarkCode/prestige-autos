@@ -2,9 +2,9 @@ import React from 'react';
 
 import './formButton.css'
 
-function FormButton() {
+function FormButton({text}) {
   return (
-    <button type='submit'>Next</button>
+    <button type='submit'>{text}</button>
   )
 }
 

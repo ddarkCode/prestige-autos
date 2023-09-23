@@ -4,11 +4,12 @@ import App from "./pages/App";
 import HomePage from "./pages/HomePage";
 import ExplorePage from "./pages/ExplorePage";
 import CarsPage from "./pages/CarsPage";
-import CarPage from "./pages/CarPage";
+import CarModelPage from "./pages/CarModelPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import Signup from "./pages/Signup";
 import Signin from "./pages/Signin";
+import AddCarPage from "./pages/AddCarPage";
 
 
 
@@ -30,11 +31,17 @@ routes: [
       {
         ...CarsPage,
         path: '/pages/cars',
+       
+      },
+      {
+        ...AddCarPage,
+        path: '/pages/cars/new-car',
         exact: true
       },
       {
-        ...CarPage,
-        path: '/pages/cars/model'
+        ...CarModelPage,
+        path: '/pages/brand/:carId',
+       
       },
       {
         ...Signup,

@@ -1,23 +1,30 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
+import {useLocation} from 'react-router-dom';
+import {upperCase} from 'lodash';
 
-import {getCars} from '../redux/actions/carActions';
+
+import { getCarBrand } from '../redux/actions/carBrandAction';
 import Car from '../components/car/Car';
+import BrandCar from '../components/car/BrandCar';
 
 import './css/carsPage.css';
 
-function CarsPage({cars, getCars}) {
 
+function CarsPage({brand, getCarBrand}) {
+  const location = useLocation();
   useEffect(() => {
-    getCars()
+    getCarBrand(location.search)
   }, [])
-console.log(cars);
+  const car = brand[0]
+
+  
   return (
     <div>
-      <h1 className='brand-name'>Car Brand Name</h1>
+      <h1 className='brand-name'>{upperCase(car.brand)}</h1>
       <div className='car-brand'>
       {
-        cars.slice(0, 7).map(car => <Car key={car._id} {...car} />)
+        brand.map(car => <BrandCar key={car._id} {...car} />)
       }
       </div>
       
@@ -25,12 +32,13 @@ console.log(cars);
   )
 }
 
-const mapStateToProps = ({cars}) => ({cars})
+const mapStateToProps = ({brand}) => ({brand})
 const mapDispatchToProps = {
-  getCars
+  getCarBrand
 }
 
 export default {
   component:  connect(mapStateToProps, mapDispatchToProps)(CarsPage),
-  loadData: ({dispatch}) => dispatch(getCars())
+  loadData: (store, query) => store.dispatch(getCarBrand(query))
+ 
 }

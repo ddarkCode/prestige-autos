@@ -18,7 +18,7 @@ function Signup() {
          <InputContainer type={'password'} name={'password'} />
          <InputContainer type={'text'} name={'address'} />
          <InputContainer type={'tel'} name={'mobile'} />
-         <FormButton/>
+         <FormButton text='Next' />
       </Form>
       <div className='or'>
         <hr/><span>Or</span><hr/>

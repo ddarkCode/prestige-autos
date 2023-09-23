@@ -17,7 +17,7 @@ function Signin() {
          <InputContainer type={'email'} name={'email'} />
          <InputContainer type={'password'} name={'password'} />
       
-         <FormButton/>
+         <FormButton text='Next' />
       </Form>
       <div className='or'>
         <hr/><span>Or</span><hr/>
