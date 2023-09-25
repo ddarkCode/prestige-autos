@@ -7,7 +7,8 @@ const carSchema = Joi.object({
   description: Joi.string().required(),
   year: Joi.string().required(),
   price: Joi.string().required(),
-  imageUrl: Joi.string().required().min(20),
+  imageUrl: Joi.string().optional(),
+  imageFile: Joi.string().optional()
 
 })
 

@@ -8,7 +8,7 @@ function Form(props) {
     props.handleSubmit()
   }
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} encType="multipart/form-data">
       {props.children}
     </form>
   )

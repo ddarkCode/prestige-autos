@@ -5,13 +5,15 @@ global.window = {};
 
 import express from 'express';
 import morgan from 'morgan';
-import {connect} from 'mongoose';
+import mongoose, {connect} from 'mongoose';
 import React from 'react';
 import debug from 'debug';
 import session from 'express-session';
 import { rateLimit } from 'express-rate-limit'
 import { matchRoutes } from 'react-router-config';
 import ejs from 'ejs';
+import multer from 'multer';
+import { MongoDBStore } from 'connect-mongodb-session';
 
 import './src/index.css';
 import carRoutes from './routes/carRoutes';
@@ -25,8 +27,10 @@ import createStore from './helpers/createStore';
 
 const {PORT, MONGO_URL_LOCAL, SESSION_SECRET, MONGO_CLOUD} = process.env
 const log = debug('app');
+const MongoDBStoreSession = MongoDBStore(session);
 
 const app = express();
+
 
 (async function connectMongo(){
   try {
@@ -38,8 +42,19 @@ const app = express();
 }())
 
 app.set('view engine', 'ejs')
+const store = MongoDBStoreSession(
+  {
+    uri: MONGO_CLOUD,
+    databaseName: 'prestigeAutosDB',
+    collection: 'prestigeAutosDBSessions'
+  }
+)
 
 app.use(session({
+  store,
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24 * 7 
+  },
   secret: SESSION_SECRET,
   saveUninitialized: false,
   resave: true
@@ -54,6 +69,7 @@ const apiLimiter = rateLimit({
 	legacyHeaders: false, 
 })
 
+
 app.use(express.static('public'));
 app.use(express.json())
 app.use(express.urlencoded({extended: true}));
@@ -62,8 +78,6 @@ app.use(morgan('combined'));
 app.use('/api', apiLimiter)
 app.use('/api/cars', carRoutes())
 app.use('/api/users', authRoutes());
-
-
 
 function reqMiddleware(req, res, next) {
   if (req.originalUrl === '/favicon.ico') {
@@ -78,21 +92,15 @@ app.get('*', reqMiddleware,(req, res) => {
   const query = req.originalUrl.split('/').find(u => u.startsWith('?'))
   const carId = req.originalUrl.split('/')[3]
 
-  
-  log('Request.url uurl: ', carId);
-  log('Full uurl: ', carId);
-  log('Full uurl: ', req.originalUrl.split('/'));
-  log('Full uurl: ', query);
-
   const matchedRoutes = matchRoutes(routes, req.path);
-//  console.log(req)
+
   const promises = matchedRoutes.map(({route}) => route.loadData ? route.loadData(store, query, carId) : null)
   .filter(prom => prom !== null).map(promise => {
     return new Promise((resolve, reject) => {
       promise.then(resolve).catch(resolve);
     })
   });
-  // log(promises);
+
 Promise.all(promises).then(() => {
   const context = {}
   const html = renderer(req, store, context);

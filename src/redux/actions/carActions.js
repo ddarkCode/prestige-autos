@@ -13,8 +13,12 @@ export const getCars = () => async dispatch => {
 
 export const addNewCar = (newCar) => async dispatch => {
   console.log('New Car Before Been Posted: ', newCar);
-  const {data} = await axios.post('http://localhost:4444/api/cars', newCar);
-  console.log('Car Action Data: ', data);
+  const {data} = await axios.post('http://localhost:4444/api/cars', newCar, 
+ {
+    headers: { 'Content-Type': 'multipart/form-data' },
+  }
+    );
+    console.log('Data From Post: ', data)
 
   dispatch({
     type: ADD_NEW_CAR,

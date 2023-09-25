@@ -19,11 +19,19 @@ const carSchema = new Schema({
   },
   price: {
     type: String,
-    required: true
+    
   },
   imageUrl: {
     type: String,
-    required: true
+    default: ''
+  },
+  imageFile: {
+    type: Object,
+    default: {
+      data: String,
+      contentType: String,
+      filename: String
+    }
   }
 }, {timestamps: true});
 

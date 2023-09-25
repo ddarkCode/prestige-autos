@@ -10,6 +10,7 @@ import ContactPage from "./pages/ContactPage";
 import Signup from "./pages/Signup";
 import Signin from "./pages/Signin";
 import AddCarPage from "./pages/AddCarPage";
+import UserPage from "./pages/UserPage";
 
 
 
@@ -35,7 +36,7 @@ routes: [
       },
       {
         ...AddCarPage,
-        path: '/pages/cars/new-car',
+        path: '/pages/new/new-car',
         exact: true
       },
       {
@@ -45,11 +46,18 @@ routes: [
       },
       {
         ...Signup,
-        path: '/pages/auth/signup'
+        path: '/pages/auth/signup',
+        exact: true
       },
       {
         ...Signin,
-        path: '/pages/auth/signin'
+        path: '/pages/auth/signin',
+        exact: true
+      },
+      {
+        ...UserPage,
+        path: '/pages/auth/user',
+        exact: true
       },
       {
         ...ContactPage,

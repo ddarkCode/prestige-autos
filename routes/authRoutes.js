@@ -2,27 +2,21 @@ import {Router} from 'express';
 import debug from 'debug';
 import passport from 'passport';
 
-import validateUser from '../validators/userValidator'
+import validateUser from '../validators/userValidator';
+import userController from '../controllers/userController';
 
 const log = debug('app:authRoutes');
 
 function authRoutes() {
   const authRouter = Router();
-
+  const {signup, signin} = userController;
+ 
 
   authRouter.route('/signup')
-  .post(validateUser,  passport.authenticate('signup', {failureRedirect: '/'}), (req, res) => {
-    const {username, email, role, address, mobile} = req.user;
-    const user = {username, email, role, address, mobile}
-    res.status(201).json(user);
-  })
+  .post(validateUser,  passport.authenticate('signup', {failureRedirect: '/pages/auth/signup'}), signup)
 
   authRouter.route('/signin')
-  .post(passport.authenticate('signin', {failureRedirect: '/'}), (req, res) => {
-    const {username, email, role, address, mobile} = req.user;
-    const user = {username, email, role, address, mobile}
-    res.status(200).json(user);
-  })
+  .post(passport.authenticate('signin', {failureRedirect: '/'}), signin)
 
   authRouter.route('/auth/google')
   .get(passport.authenticate('google', { scope: ['profile'] }));
