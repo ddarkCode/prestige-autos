@@ -61,7 +61,7 @@ function Signup(props) {
             <hr/><span>Already Have An Account?</span><hr/>
             
           </div>
-          <Link to='/pages/auth/signin'>Sign In</Link>
+          <Link to='/pages/auth/login'>Sign In</Link>
           <div className='or google-or'>
             <hr/><span>Or</span><hr/>
             

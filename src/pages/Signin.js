@@ -58,7 +58,7 @@ function Signin({signin, auth}) {
             <hr/><span>Don't Have An Accounnt?</span><hr/>
             
           </div>
-          <Link to='/pages/auth/signup'>Create Account</Link>
+          <Link to='/pages/auth/register'>Create Account</Link>
           <div className='or google-or'>
             <hr/><span>Or</span><hr/>
             
