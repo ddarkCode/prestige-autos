@@ -61,5 +61,5 @@
     "style-loader": "^3.3.3",
     "webpack-cli": "^5.1.4"
   },
-  "proxy": "localhost:4444"
+  "proxy": "https://prestige-autos.onrender.com/"
 }

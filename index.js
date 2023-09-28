@@ -42,7 +42,7 @@ const app = express();
 }())
 app.use(cors());
 
-const allowedOrigins = ['http://localhost:4444'];
+const allowedOrigins = ['http://localhost:4444', 'https://prestige-autos.onrender.com'];
 
 const store = new MongoDBStoreSession({
     uri: MONGO_CLOUD,

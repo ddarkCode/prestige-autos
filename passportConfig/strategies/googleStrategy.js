@@ -11,7 +11,7 @@ function googleStrategy() {
   passport.use(new Strategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:4444/auth/google/signin"
+    callbackURL: "https://prestige-autos.onrender.com/auth/google/signin"
   },
   function(accessToken, refreshToken, profile, cb) {
     log(profile);

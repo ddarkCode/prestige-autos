@@ -5,7 +5,7 @@ import cors from 'cors'
 
 export function signup(user) {
   return async function(dispatch) {
-    const {data} = await axios.post('http://localhost:4444/api/users/signup', user);
+    const {data} = await axios.post('https://prestige-autos.onrender.com/api/users/signup', user);
 
     dispatch({
       type: SIGN_UP,
@@ -16,7 +16,7 @@ export function signup(user) {
 
 export function signin(user) {
   return async function(dispatch) {
-    const {data} = await axios.post('http://localhost:4444/api/users/signin', user);
+    const {data} = await axios.post('https://prestige-autos.onrender.com/api/users/signin', user);
 
     dispatch({
       type: SIGN_IN,
@@ -26,7 +26,7 @@ export function signin(user) {
 }
 
 const googleAxiosInstance = axios.create({
-  baseURL: 'http://localhost:4444/auth/google',
+  baseURL: 'https://prestige-autos.onrender.com/auth/google',
   headers: {
     'Content-Type': 'application/json', 
     'Authorization': 'Bearer YourAccessToken', 
@@ -63,7 +63,7 @@ export function signinWithGoogle() {
 
 export function signout() {
   return async function(dispatch) {
-    const {data} = await axios.get('http://localhost:4444/api/users/logout');
+    const {data} = await axios.get('https://prestige-autos.onrender.com/api/users/logout');
 
     dispatch({
       type: SIGN_OUT,
