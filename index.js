@@ -24,7 +24,8 @@ import routes from './src/Routes';
 import renderer from './helpers/renderer';
 import createStore from './helpers/createStore';
 
-const {PORT, MONGO_URL_LOCAL, SESSION_SECRET, MONGO_CLOUD} = process.env
+const { MONGO_URL_LOCAL, SESSION_SECRET, MONGO_CLOUD} = process.env
+let PORT = process.env.PORT || 3000
 const log = debug('app');
 const MongoDBStoreSession = MongoDBStore(session);
 
