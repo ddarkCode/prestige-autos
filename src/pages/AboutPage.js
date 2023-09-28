@@ -3,7 +3,7 @@ import React from 'react';
 import ExploreButton from '../components/exploreButton/ExploreButton';
 
 import './css/aboutPage.css';
-
+ 
 function AboutPage() {
   return (
     <div className='about-page'> 

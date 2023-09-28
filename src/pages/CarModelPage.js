@@ -13,22 +13,25 @@ function CarModelPage({model, getCarById}) {
   useEffect(() => {
     getCarById(carId);
   }, [])
+  console.log(model)
   return (
-    <div>
-      <h1>{upperCase(model.brand)}</h1>
-      <h2>{upperCase(model.model)}</h2>
-      <div className='model-details'>
-      <div className='model-details-image-container'>
-        <img src={`${model.imageUrl}`} />
+    (Object.keys(model).length !== 0) ? 
+    (<div className='view-car-page'>
+        <h1>{upperCase(model.brand)}</h1>
+        <h3>{upperCase(model.model)}</h3>
+        <div className='model-details'>
+        <div className='model-details-image-container'>
+          <img src={`${model.imageUrl}`} />
+        </div>
+        <div className='model-details-info'>
+          <p>{`${model.description}`}</p>
+          <p>Year: {' - '}  {model.year}</p>
+          <p>Price: {' - $'} {model.price}</p>
+         
+        </div>
+        </div>
       </div>
-      <div className='model-details-info'>
-        <p>{`${model.description}`}</p>
-        <p>Year: {' - '}  {model.year}</p>
-        <p>Price: {' - $'} {model.price}</p>
-       
-      </div>
-      </div>
-    </div>
+    ) :  <h2>Loading</h2>
   )
 }
 

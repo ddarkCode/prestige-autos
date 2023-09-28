@@ -6,8 +6,8 @@ const log = debug('app:userValidator')
 
 const userSchema =  Joi.object({
   username: Joi.string().min(2).required(),
-  password: Joi.string().required().min(8),
-  email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net', 'org'] } }).required(),
+  password: Joi.string().optional(),
+  email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net', 'org'] } }).optional(),
   mobile: Joi.number().optional(),
   address: Joi.string().optional(),
   role: Joi.string().default('client').optional()

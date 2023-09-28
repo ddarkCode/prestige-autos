@@ -7,19 +7,18 @@ import  {Redirect} from 'react-router-dom';
 function  requireAuth(Component)  {
   function Authenticated(props) {
 
-    switch (props.user) {
+    switch (props.auth) {
       case null:
-        return <Redirect to={'/pages/auth/signin'} />
+        return <Redirect to={'/pages/auth/login'} />
     
       default:
         return <Component {...props} />
     }
   }
 
-  const mapStateToProps  = (state)  => {
-    console.log('Map State To Props',state)
+  const mapStateToProps  = ({auth})  => {
     return {
-      user: state.user
+      auth
     }
   }
 

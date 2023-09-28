@@ -28,3 +28,22 @@ a {
   font-weight: 700;
   font-style: italic;
 }
+
+@media only screen and (max-width: 700px) {
+  header {
+    margin-left: 19px;
+    margin-right: 19px;
+  }
+  nav {
+    display: flex;
+    flex-direction: column;
+  } 
+  ul {
+    margin-top: 30px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  nav ul li {
+    margin-bottom: 25px;
+  }
+} 

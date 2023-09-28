@@ -46,12 +46,12 @@ routes: [
       },
       {
         ...Signup,
-        path: '/pages/auth/signup',
+        path: '/pages/auth/register',
         exact: true
       },
       {
         ...Signin,
-        path: '/pages/auth/signin',
+        path: '/pages/auth/login',
         exact: true
       },
       {

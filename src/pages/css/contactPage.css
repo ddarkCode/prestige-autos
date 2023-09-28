@@ -8,7 +8,7 @@
   font-size: 18px;
   font-weight: 300;
 }
-
+ 
 .contact-page-image-container {
   width: 100%;
   text-align: center;
@@ -59,4 +59,57 @@
 .contact-page-info p:nth-child(7) {
   font-size: 18px;
   font-weight: 300;
+}
+
+@media only screen and (max-width: 600px) {
+
+  .contact-page {
+    margin-left: 19px;
+    margin-right: 19px;
+  }
+
+  .contact-page h1 {
+    
+    font-size: 15px;
+    font-weight: 400;
+  }
+  
+  .contact-page h1 span {
+    font-size: 13px;
+    font-weight: 200;
+  }
+
+  .contact-page-info p:first-child {
+    font-size: 13px;
+    font-weight: 300;
+  }
+  .contact-page-info h3 {
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+
+  
+.contact-page-info p:nth-child(2), 
+.contact-page-info p:nth-child(3), 
+.contact-page-info p:nth-child(4), 
+.contact-page-info p:nth-child(5),
+.contact-page-info p:nth-child(6) {
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.contact-page-info p:nth-child(2) span,
+ .contact-page-info p:nth-child(3) span, 
+ .contact-page-info p:nth-child(4) span, 
+  .contact-page-info p:nth-child(5) span,
+  .contact-page-info p:nth-child(6) span {
+  font-size: 10px;
+  font-weight: 200;
+}
+
+.contact-page-info p:nth-child(7) {
+  font-size: 12px;
+  font-weight: 300;
+}
 }

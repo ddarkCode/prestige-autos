@@ -1,8 +1,9 @@
 .home-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
-}
+} 
 
 .home-info {
   display: flex;
@@ -30,14 +31,14 @@
 
 .home-image-container {
  text-align: center;
- height: 450px;
+width: 100%;
 
 }
 
 .home-image-container img {
   width: 100%;
   object-fit: cover;
-  height: 100%;
+
 }
 
 .car-detail-container {
@@ -88,4 +89,84 @@
 
 .specs span:last-child {
   font-size: 16px;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .home-container {
+    width: 100%;
+    margin: 30px 0;
+     line-height: 1.6;
+  }
+  .home-info {
+    width: 95%;
+    margin: 0;
+  }
+  .home-info h3 {
+    font-size: 21px;
+    font-weight: 400;
+    width: 30%;
+  }
+  .home-info div {
+    width:40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* margin-right: 19px; */
+  }
+  
+  .home-info p {
+    font-size: 13px;
+    font-weight: 300;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+
+  .home-image-container {
+    width: 95%;
+   }
+   
+   .car-detail-container {
+    width: 95%;
+   }
+
+   .car-detail-price {
+    width: 30%;
+    align-items: flex-start;
+  justify-content: flex-start;
+   }
+
+   .car-detail-price:first-child {
+    font-size: 11px;
+  }
+  .price {
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 2;
+    margin: 0;
+    padding: 0;
+  }
+
+  .car-detail-specs {
+    width: 65%;
+    justify-content: flex-start;
+  align-items: flex-start;
+  }
+   .specs {
+    margin-left: 0;
+  }
+
+  .specs span:first-child {
+    font-size: 11px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    margin-right: 8px;
+  }
+  
+  .specs span:last-child {
+    font-size: 8px;
+    font-weight: 400;
+    margin-right: 5px;
+  }
 }

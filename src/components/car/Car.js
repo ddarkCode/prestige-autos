@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
+import {capitalize, upperCase} from 'lodash';
 
 import './Car.css';
 
@@ -15,12 +16,12 @@ if (imageFile) {
   return () => URL.revokeObjectURL(newImageBlob);
 }
 }, [imageFile])
-  console.log(imageBlob)
+
   return (
     <div className='car-container'>
           <div className='car-image-container'><img src={imageUrl} /></div>
-          <div className='car-image-container'><img src={imageBlob} /></div>
-           <h5>{brand}{' - '}{model}</h5>
+          {/* <div className='car-image-container'><img src={imageBlob} /></div> */}
+           <h5>{upperCase(brand)}{' - '}{model}</h5>
            <p>{description.substring(0, 400)}</p>
            <p>Year: {year}{'  -  '}Price: ${price}</p>
            <Link to={`/pages/cars/?brand=${brand}`}>Explore</Link>

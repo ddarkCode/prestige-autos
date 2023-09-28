@@ -1,0 +1,24 @@
+
+
+.page-button-container button {
+  border: 1px solid #fff;
+  height: 40px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 17px;
+}
+
+@media  only screen and (max-width:600px) {
+  
+.page-button-container button {
+ 
+  height: 30px;
+  width: 100px;
+
+  margin-top: 20px;
+  font-size: 14px;
+}
+}

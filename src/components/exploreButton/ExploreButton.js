@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom';
 
 import './ExploreButton.css';
 
-function ExploreButton({text}) {
+function ExploreButton({text, styles}) {
   return (
-    <Link className='exploreButton' to='/pages/explore'>{text}</Link>
+    <Link className='exploreButton' styles={styles} to='/pages/explore'>{text}</Link>
   )
 }
 

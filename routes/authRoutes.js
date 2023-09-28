@@ -1,6 +1,7 @@
 import {Router} from 'express';
 import debug from 'debug';
 import passport from 'passport';
+import cors from 'cors'
 
 import validateUser from '../validators/userValidator';
 import userController from '../controllers/userController';
@@ -17,14 +18,15 @@ function authRoutes() {
 
   authRouter.route('/signin')
   .post(passport.authenticate('signin', {failureRedirect: '/'}), signin)
-
-  authRouter.route('/auth/google')
-  .get(passport.authenticate('google', { scope: ['profile'] }));
-
-authRouter.route('/auth/google/signin')
-  .get(passport.authenticate('google', { failureRedirect: '/' }),
-  function(req, res) {
-    res.redirect('/');
+  authRouter.route('/logout')
+  .get((req, res) => {
+    req.logOut(err => {
+      if (err) {
+        log(err)
+      } else {
+        return res.json(null);
+      }
+    })
   })
 
   return authRouter;

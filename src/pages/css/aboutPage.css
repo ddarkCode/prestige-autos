@@ -38,3 +38,35 @@
   width: 100%;
   object-fit: cover;
 }
+
+@media only screen and (max-width: 600px) {
+    .about-page {
+      margin-left: 19px;
+      margin-right: 19px;
+      margin-bottom: 20px;
+    }
+  
+    .about-page h1 {
+      font-size: 15px;
+      font-weight: 500;
+    }
+    .about-page-info div:first-child {
+      font-size: 16px;
+      font-weight: 400;
+      width: 35%;
+    }
+    .about-page-info div:last-child {
+      font-size: 12px;
+      font-weight: 300;
+      margin-bottom: 20px;
+      width: 40%;
+    }
+    .about-page-info a {
+      width: 140px;
+    }
+
+    .about-page-image-container {
+      margin: 20px 0;
+    }
+    
+}

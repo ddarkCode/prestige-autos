@@ -26,22 +26,22 @@ function HomePage() {
             <span className='price'>$62,890</span>
           </div>
           <div className='car-detail-specs'>
-          <div className='specs'>
-            <span>950 MPH</span>
-            <span>Top Speed</span>
-          </div>
-          <div className='specs'>
-            <span>50 Litres</span>
-            <span>Consumption</span>
-          </div>
-          <div className='specs'>
-            <span>7.0</span>
-            <span>Safety Rating</span>
-          </div>
-          <div className='specs'>
-            <span>3.5</span>
-            <span>Acceleration</span>
-          </div>
+            <div className='specs'>
+              <span>950 MPH</span>
+              <span>Top Speed</span>
+            </div>
+            <div className='specs'>
+              <span>50 Litres</span>
+              <span>Consumption</span>
+            </div>
+            <div className='specs'>
+              <span>7.0</span>
+              <span>Safety Rating</span>
+            </div>
+            <div className='specs'>
+              <span>3.5</span>
+              <span>Acceleration</span>
+            </div>
           </div>
         </div>
     </div>

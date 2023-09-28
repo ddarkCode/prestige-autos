@@ -6,6 +6,7 @@ import InputContainer from '../components/input/InputContainer';
 import FormButton from '../components/formButton/FormButton';
 import Form from '../components/form/Form';
 import { signup } from '../redux/actions/authAction';
+import GoogleButton from '../components/googleButton/GoogleButton';
 
 import './css/auth.css'
 
@@ -42,7 +43,7 @@ function Signup(props) {
     }
 
   }
-  switch (props.user) {
+  switch (props.auth) {
     case null:
       return (
         <div className='auth'>
@@ -57,10 +58,15 @@ function Signup(props) {
              <FormButton text='Next' />
           </Form>
           <div className='or'>
-            <hr/><span>Or</span><hr/>
+            <hr/><span>Already Have An Account?</span><hr/>
             
           </div>
           <Link to='/pages/auth/signin'>Sign In</Link>
+          <div className='or google-or'>
+            <hr/><span>Or</span><hr/>
+            
+          </div>
+          <GoogleButton/>
         </div>
       )
   
@@ -70,9 +76,9 @@ function Signup(props) {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(auth) {
   return {
-    user: state.user
+   auth
   }
 }
 

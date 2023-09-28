@@ -90,3 +90,20 @@ label {
   color: #f4f5f7;
   font-size: 14px;
 }
+
+button {
+	background: none;
+	border: none;
+	outline: none;
+	color: #fff;
+	font-weight: 200;
+	cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+	body {
+		font-size: 14px;
+		padding: 0 5px;
+	
+	}
+}

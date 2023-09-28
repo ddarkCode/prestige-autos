@@ -5,7 +5,6 @@ import {upperCase} from 'lodash';
 
 
 import { getCarBrand } from '../redux/actions/carBrandAction';
-import Car from '../components/car/Car';
 import BrandCar from '../components/car/BrandCar';
 
 import './css/carsPage.css';
@@ -14,17 +13,19 @@ import './css/carsPage.css';
 function CarsPage({brand, getCarBrand}) {
   const location = useLocation();
   useEffect(() => {
-    getCarBrand(location.search)
+   
+      getCarBrand(location.search)
+   
   }, [])
-  const car = brand[0]
-
+  const brandName = brand.results ? brand.results[0].brand : 'Loading';
+ 
   
   return (
     <div>
-      <h1 className='brand-name'>{upperCase(car.brand)}</h1>
+      <h1 className='brand-name'>{upperCase(brandName)}</h1>
       <div className='car-brand'>
       {
-        brand.map(car => <BrandCar key={car._id} {...car} />)
+        brand.results ? brand.results.map(car => <BrandCar key={car._id} {...car} />) : null
       }
       </div>
       

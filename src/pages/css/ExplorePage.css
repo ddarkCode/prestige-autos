@@ -1,6 +1,8 @@
 .explore {
   margin-top: 50px;
-  height: 3300px;
+  height: 3000px;
+  display: flex;
+  flex-direction: column;
 }
 
 .explore-info {
@@ -25,11 +27,47 @@
 
 .explore-cars {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   width: 100%;
-  height: 90vh;
- 
- 
+  height: 85%;
+}
+
+.pagination {
+   margin-top: 100px;
+    display: flex;
+    justify-content: space-between;
+  
+}
+
+@media only screen and (max-width: 860px) {
+  .explore {
+    height: 5500px;
+  }
+  .explore-cars {
+    height: 90%;
+  }
+}
+
+@media only screen and (max-width: 600px)  {
+  .explore {
+    margin: 0 19px;
+    height: 6300px;
+  }
+  .pagination {
+    margin-top: 150px; 
+ }
+
+ .explore-info h2 {
+  font-size: 21px;
+  font-weight: 500;
+  width: 30%;
+}
+
+.explore-info p {
+  font-size: 13px;
+  font-weight: 500;
+  width: 40%;
+}
 }

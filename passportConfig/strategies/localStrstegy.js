@@ -1,6 +1,7 @@
 import passport from "passport";
 import {Strategy} from 'passport-local';
 import debug from "debug";
+import {hash, compare} from 'bcrypt';
 
 import User from "../../models/userModel";
 
@@ -23,8 +24,14 @@ function localStrategy() {
         log('Passport-Local: User already Exists: ',userExist);
         return done(null, false, {message: 'User With This Email Already Exists'});
       }
+      const hashedPassword = await hash(password, +process.env.SALT_ROUND);
       const newUser = new User({
-        email, password,mobile, role, address, username
+        email, 
+        password: hashedPassword,
+        mobile,
+         role,
+          address,
+           username
       })
 
       const savedUser = await newUser.save();

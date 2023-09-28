@@ -5,23 +5,22 @@ global.window = {};
 
 import express from 'express';
 import morgan from 'morgan';
-import mongoose, {connect} from 'mongoose';
+import {connect} from 'mongoose';
 import React from 'react';
 import debug from 'debug';
 import session from 'express-session';
 import { rateLimit } from 'express-rate-limit'
 import { matchRoutes } from 'react-router-config';
-import ejs from 'ejs';
-import multer from 'multer';
-import { MongoDBStore } from 'connect-mongodb-session';
+import MongoDBStore from 'connect-mongodb-session';
+import cors from 'cors';
 
 import './src/index.css';
 import carRoutes from './routes/carRoutes';
 import authRoutes from './routes/authRoutes';
 import passportConfig from './passportConfig/passport';
+import googleRoutes from './routes/googleRoutes';
 
 import routes from './src/Routes';
-import App from './src/pages/App';
 import renderer from './helpers/renderer';
 import createStore from './helpers/createStore';
 
@@ -40,15 +39,34 @@ const app = express();
     log(err)
   }
 }())
+app.use(cors());
 
-app.set('view engine', 'ejs')
-const store = MongoDBStoreSession(
-  {
+const allowedOrigins = ['http://localhost:4444'];
+
+const store = new MongoDBStoreSession({
     uri: MONGO_CLOUD,
     databaseName: 'prestigeAutosDB',
     collection: 'prestigeAutosDBSessions'
-  }
-)
+  })
+
+
+    app.use(
+      cors({
+        origin: (origin, callback) => {
+          
+          if (allowedOrigins.includes(origin) || !origin) {
+            callback(null, true); 
+          } else {
+            callback(new Error('Not allowed by CORS')); 
+          }
+        },
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', 
+        allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization', 
+        exposedHeaders: 'Content-Length, X-Custom-Header',
+      })
+    );
+    
+ 
 
 app.use(session({
   store,
@@ -69,13 +87,16 @@ const apiLimiter = rateLimit({
 	legacyHeaders: false, 
 })
 
-
 app.use(express.static('public'));
+app.set('view engine', 'ejs');
 app.use(express.json())
 app.use(express.urlencoded({extended: true}));
 app.use(morgan('combined'));
 
+
+
 app.use('/api', apiLimiter)
+app.use('/auth', googleRoutes())
 app.use('/api/cars', carRoutes())
 app.use('/api/users', authRoutes());
 

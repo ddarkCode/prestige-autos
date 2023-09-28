@@ -1,12 +1,31 @@
 .car-brand {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
+  height: 1400px;
 }
 
 .brand-name {
   margin: 30px 0;
   font-size: 20px;
   font-weight: 500;
+}
+
+@media only screen and (max-width: 900px) {
+  .car-brand {
+
+    height:2100px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .car-brand {
+    height:2500px;
+    margin-left: 19px;
+    margin-right: 19px;
+  }
+  .brand-name {
+    margin-left: 19px;
+  }
 }

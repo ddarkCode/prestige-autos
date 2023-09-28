@@ -11,7 +11,7 @@ const reducers = combineReducers({
   cars: carsReducer,
   brand: carBrandReducer,
   model: carModelReducer,
-  user: authReducer
+  auth: authReducer
 })
 
 export default reducers;

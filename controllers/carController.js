@@ -49,7 +49,7 @@ const postCar = async (req, res) => {
   const {brand, model, price, imageUrl, description, year} = req.body;
   const base64Data = buffer.toString('base64');
 const newCar = new Car({
-brand,model,imageUrl,description,year,price,
+brand: lowerCase(brand),model,imageUrl,description,year,price,
 imageFile: {
  data: base64Data,
  filename: originalname,
@@ -89,7 +89,7 @@ const putCar = async (req, res) => {
     car.brand = req.body.brand
     car.model = req.body.model;
     car.year = req.body.year;
-    car.price = req.bpdy.price;
+    car.price = req.body.price;
     car.description = req.body.description;
     car.imageUrl = req.body.imageUrl;
     await car.save()

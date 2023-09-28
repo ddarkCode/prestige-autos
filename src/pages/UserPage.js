@@ -1,21 +1,26 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
+import ExploreButton from '../components/exploreButton/ExploreButton';
 
 import requireAuth from '../components/requireAuth';
 
 function UserPage(props) {
-  console.log('UserPage Props', props);
+  let auth = props.auth
+  
  
   return (
-    <div>
-      <h1 style={{fontSize: '30px', fontWeight: '700'}}><span style={{marginRight:  '40px'}}>Welcome</span>{props.user.username}</h1>
+    <div style={{height: '500px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+      <h1 style={{fontSize: '30px', fontWeight: '700', marginBottom: '50px'}}><span style={{marginRight:  '40px'}}>Welcome</span>{auth ? auth.username : ''}</h1>
+      <p style={{marginBottom: '50px', fontSize: '21px'}}>Continue To The Explore Page To Find Out Which Car Suits You The Best.</p>
+      <div style={{textAlign: 'center'}} ><ExploreButton text='Explore' /></div>
     </div>
   )
 }
 
-function mapStateToProps({user}) {
+function mapStateToProps({auth}) {
   return {
-    user
+    auth
   }
 }
 

@@ -8,12 +8,10 @@ const userSchema = new Schema({
     required: true
   },
   email: {
-    type: String,
-    required: true
+    type: String
   },
   password: {
-    type: String,
-    required: true
+    type: String
   },
   role: {
     type: String,
@@ -31,13 +29,6 @@ const userSchema = new Schema({
 })
 
 userSchema.plugin(findOrCreate);
-
-userSchema.pre('save', async function(next) {
-  if (this.isModified()) {
-    this.password = await hash(this.password, +process.env.SALT_ROUND);
-    next()
-  }
-});
 
 userSchema.methods.verifyPassword = async function(password,hashedPassword) {
   return await compare(password, hashedPassword);

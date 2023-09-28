@@ -1,3 +1,18 @@
+.view-car-page {
+
+}
+.view-car-page h1 {
+  font-size: 21px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.view-car-page h3 {
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
 .model-details {
   display: flex;
   flex-wrap: wrap;
@@ -16,36 +31,40 @@
 .model-details-info {
   width: 45%;
   justify-self: flex-start;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 300;
-  line-height: 1.3;
+  line-height: 1.4;
 }
 
 .model-details-info p {
   margin-bottom: 20px;
 }
 
+@media only screen and (max-width: 800px) {
+  .model-details-info {
+    width: 50%;
+    font-size: 12px;
+  }
+}
+
 @media only screen and (max-width: 600px) {
+  .view-car-page  {
+    margin: 30px 19px;
+  }
   .model-details {
-    /* display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center; */
     flex-direction: column;
   }
   
   .model-details-image-container {
     width: 100%;
   }
-  /* .model-details-image-container img {
-    width: 100%;
-    object-fit: cover;
-  } */
+
   
   .model-details-info {
+    margin-top: 20px;
     width: 100%;
    
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 300;
     line-height: 1.5;
   }

@@ -2,7 +2,6 @@ import React from 'react'
 import { Twitter, Facebook,Linkedin } from 'react-bootstrap-icons';
 
 import Logo from '../Logo';
-
 import './Footer.css';
 
 function Footer() {

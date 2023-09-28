@@ -3,6 +3,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0 19px;
+  margin-bottom: 30px;
+
 }
 
 .or {
@@ -14,16 +17,19 @@
   
 }
 .or span{
-  font-size: 21px;
+  font-size: 12px;
   font-weight: 300;
   /* margin: 0 1px; */
 }
 .or hr {
-  width: 42%;
+  width: 26%;
   color: #969799;
   height: 0.5px;
   border: none;
   background-color: #969799;
+}
+div.google-or hr {
+  width: 47%;
 }
 .auth a {
   border-radius: 5px;
