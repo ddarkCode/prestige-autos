@@ -56,12 +56,10 @@ function Signin({signin, auth}) {
           </Form>
           <div className='or'>
             <hr/><span>Don't Have An Accounnt?</span><hr/>
-            
           </div>
           <Link to='/pages/auth/register'>Create Account</Link>
           <div className='or google-or'>
-            <hr/><span>Or</span><hr/>
-            
+            <hr/><span>Or</span><hr/>  
           </div>
           <GoogleButton/>
 

@@ -10,7 +10,7 @@ import GoogleButton from '../components/googleButton/GoogleButton';
 
 import './css/auth.css'
 
-function Signup(props) {
+function Signup({auth, signup}) {
   const history = useHistory();
   const [user, setUser] = useState({
     username: '',
@@ -31,7 +31,7 @@ function Signup(props) {
   }
   function handleSubmit() {
     try {
-      props.signup(user);
+      signup(user);
       history.push('/pages/auth/user');
       setUser({  username: '',
       email: '',
@@ -43,7 +43,7 @@ function Signup(props) {
     }
 
   }
-  switch (props.auth) {
+  switch (auth) {
     case null:
       return (
         <div className='auth'>
@@ -59,7 +59,6 @@ function Signup(props) {
           </Form>
           <div className='or'>
             <hr/><span>Already Have An Account?</span><hr/>
-            
           </div>
           <Link to='/pages/auth/login'>Sign In</Link>
           <div className='or google-or'>
@@ -76,7 +75,7 @@ function Signup(props) {
   }
 }
 
-function mapStateToProps(auth) {
+function mapStateToProps({auth}) {
   return {
    auth
   }
